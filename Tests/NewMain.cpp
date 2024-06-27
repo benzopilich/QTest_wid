@@ -44,15 +44,20 @@ vector<unsigned> Prime::Factorization(unsigned n)
 
 
 
-double taylor:: series(double x, double eps){
-        double sum=x, h; int i=4;
-        h=(-1)*(pow(x,3)/6);
-        do{
-            sum+=h;  //Формула очередного слагаемого
-            h*=(-1)*((pow(x,2)/((i)*(i+1))));
-            i+=2;}
-        while( fabs(h)>eps );
-        return sum;
+double taylor:: series(double xe, double eps){
+
+        double x=xe;
+        bool flag;    if(xe<0){
+            flag=false;    x=abs(xe);
+            double max=2*M_PI;    if(x>max){
+                while(x>max){            x-=max;
+                }    }
+        }    double sum=x, h; int i=4;
+        h=(-1)*(pow(x,3)/6);        do{
+            sum+=h;            h*=(-1)*((pow(x,2)/((i)*(i+1))));
+            i+=2;}        while( fabs(h)>eps );
+        if(flag==false){            sum*=(-1);
+        }        return sum;
     }
 
 
